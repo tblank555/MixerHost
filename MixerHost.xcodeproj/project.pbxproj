@@ -320,8 +320,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = MixerHost_Prefix.pch;
-				INFOPLIST_FILE = "$(SRCROOT)/MixerHost-Info.plist";
+				GCC_PREFIX_HEADER = MixerHost/MixerHost_Prefix.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/MixerHost/MixerHost-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -332,8 +332,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = MixerHost_Prefix.pch;
-				INFOPLIST_FILE = "$(SRCROOT)/MixerHost-Info.plist";
+				GCC_PREFIX_HEADER = MixerHost/MixerHost_Prefix.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/MixerHost/MixerHost-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
