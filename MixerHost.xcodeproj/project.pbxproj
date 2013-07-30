@@ -320,8 +320,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MixerHost/MixerHost-Prefix.pch";
-				INFOPLIST_FILE = "MixerHost/MixerHost-Info.plist";
+				GCC_PREFIX_HEADER = MixerHost_Prefix.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/MixerHost-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -332,8 +332,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MixerHost/MixerHost-Prefix.pch";
-				INFOPLIST_FILE = "MixerHost/MixerHost-Info.plist";
+				GCC_PREFIX_HEADER = MixerHost_Prefix.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/MixerHost-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -359,6 +359,7 @@
 				DB24736917A8663100287D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
