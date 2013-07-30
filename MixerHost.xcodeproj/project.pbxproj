@@ -41,10 +41,10 @@
 		DB24736E17A8668000287D60 /* MixerHostAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerHostAudio.m; sourceTree = "<group>"; };
 		DB24736F17A8668000287D60 /* MixerHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHostViewController.h; sourceTree = "<group>"; };
 		DB24737017A8668000287D60 /* MixerHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerHostViewController.m; sourceTree = "<group>"; };
-		DB24737217A8668000287D60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
-		DB24737317A8668000287D60 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DB24737417A8668000287D60 /* MixerHost_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHost_Prefix.pch; sourceTree = "<group>"; };
-		DB24737517A8668000287D60 /* MixerHost-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MixerHost-Info.plist"; path = "../MixerHost-Info.plist"; sourceTree = "<group>"; };
+		DB24737217A8668000287D60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../MixerHost/Default-568h@2x.png"; sourceTree = "<group>"; };
+		DB24737317A8668000287D60 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MixerHost/main.m; sourceTree = "<group>"; };
+		DB24737417A8668000287D60 /* MixerHost_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MixerHost_Prefix.pch; path = MixerHost/MixerHost_Prefix.pch; sourceTree = "<group>"; };
+		DB24737517A8668000287D60 /* MixerHost-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MixerHost-Info.plist"; path = "../MixerHost/MixerHost-Info.plist"; sourceTree = "<group>"; };
 		DB24737817A8668000287D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MixerHostViewController.xib; sourceTree = "<group>"; };
 		DB24737A17A8668000287D60 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DB24737B17A8668000287D60 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
