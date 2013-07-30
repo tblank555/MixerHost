@@ -7,5 +7,5 @@ Apple's MixerHost example project adapted to work with iOS SDK 6.1
 
 Requirements:
 
-XCode 3.2+
-iOS SDK 6.1+
++ XCode 3.2+
++ iOS SDK 6.1+
