@@ -10,12 +10,24 @@
 		DB24734E17A8663000287D60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24734D17A8663000287D60 /* UIKit.framework */; };
 		DB24735017A8663000287D60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24734F17A8663000287D60 /* Foundation.framework */; };
 		DB24735217A8663000287D60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB24735117A8663000287D60 /* CoreGraphics.framework */; };
-		DB24735817A8663000287D60 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB24735617A8663000287D60 /* InfoPlist.strings */; };
-		DB24735A17A8663000287D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24735917A8663000287D60 /* main.m */; };
-		DB24735E17A8663100287D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24735D17A8663100287D60 /* AppDelegate.m */; };
-		DB24736017A8663100287D60 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24735F17A8663100287D60 /* Default.png */; };
-		DB24736217A8663100287D60 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24736117A8663100287D60 /* Default@2x.png */; };
-		DB24736417A8663100287D60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24736317A8663100287D60 /* Default-568h@2x.png */; };
+		DB24738617A8668000287D60 /* MixerHostAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24736C17A8668000287D60 /* MixerHostAppDelegate.m */; };
+		DB24738717A8668000287D60 /* MixerHostAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24736E17A8668000287D60 /* MixerHostAudio.m */; };
+		DB24738817A8668000287D60 /* MixerHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24737017A8668000287D60 /* MixerHostViewController.m */; };
+		DB24738A17A8668000287D60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737217A8668000287D60 /* Default-568h@2x.png */; };
+		DB24738B17A8668000287D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB24737317A8668000287D60 /* main.m */; };
+		DB24738C17A8668000287D60 /* MixerHost-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB24737517A8668000287D60 /* MixerHost-Info.plist */; };
+		DB24738D17A8668000287D60 /* MixerHostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB24737717A8668000287D60 /* MixerHostViewController.xib */; };
+		DB24738E17A8668000287D60 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737A17A8668000287D60 /* Default.png */; };
+		DB24738F17A8668000287D60 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737B17A8668000287D60 /* Icon-72.png */; };
+		DB24739017A8668000287D60 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737C17A8668000287D60 /* Icon-Small-50.png */; };
+		DB24739117A8668000287D60 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737D17A8668000287D60 /* Icon-Small.png */; };
+		DB24739217A8668000287D60 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737E17A8668000287D60 /* Icon-Small@2x.png */; };
+		DB24739317A8668000287D60 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24737F17A8668000287D60 /* Icon.png */; };
+		DB24739417A8668000287D60 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24738017A8668000287D60 /* Icon@2x.png */; };
+		DB24739517A8668000287D60 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = DB24738117A8668000287D60 /* iTunesArtwork */; };
+		DB24739617A8668000287D60 /* rounded_rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = DB24738217A8668000287D60 /* rounded_rectangle.png */; };
+		DB24739717A8668000287D60 /* beatsMono.caf in Resources */ = {isa = PBXBuildFile; fileRef = DB24738417A8668000287D60 /* beatsMono.caf */; };
+		DB24739817A8668000287D60 /* guitarStereo.caf in Resources */ = {isa = PBXBuildFile; fileRef = DB24738517A8668000287D60 /* guitarStereo.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,15 +35,28 @@
 		DB24734D17A8663000287D60 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DB24734F17A8663000287D60 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB24735117A8663000287D60 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DB24735517A8663000287D60 /* MixerHost-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MixerHost-Info.plist"; sourceTree = "<group>"; };
-		DB24735717A8663000287D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DB24735917A8663000287D60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DB24735B17A8663000287D60 /* MixerHost-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MixerHost-Prefix.pch"; sourceTree = "<group>"; };
-		DB24735C17A8663100287D60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		DB24735D17A8663100287D60 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DB24735F17A8663100287D60 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		DB24736117A8663100287D60 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		DB24736317A8663100287D60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DB24736B17A8668000287D60 /* MixerHostAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHostAppDelegate.h; sourceTree = "<group>"; };
+		DB24736C17A8668000287D60 /* MixerHostAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerHostAppDelegate.m; sourceTree = "<group>"; };
+		DB24736D17A8668000287D60 /* MixerHostAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHostAudio.h; sourceTree = "<group>"; };
+		DB24736E17A8668000287D60 /* MixerHostAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerHostAudio.m; sourceTree = "<group>"; };
+		DB24736F17A8668000287D60 /* MixerHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHostViewController.h; sourceTree = "<group>"; };
+		DB24737017A8668000287D60 /* MixerHostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixerHostViewController.m; sourceTree = "<group>"; };
+		DB24737217A8668000287D60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
+		DB24737317A8668000287D60 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DB24737417A8668000287D60 /* MixerHost_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixerHost_Prefix.pch; sourceTree = "<group>"; };
+		DB24737517A8668000287D60 /* MixerHost-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MixerHost-Info.plist"; path = "../MixerHost-Info.plist"; sourceTree = "<group>"; };
+		DB24737817A8668000287D60 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MixerHostViewController.xib; sourceTree = "<group>"; };
+		DB24737A17A8668000287D60 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DB24737B17A8668000287D60 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		DB24737C17A8668000287D60 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		DB24737D17A8668000287D60 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		DB24737E17A8668000287D60 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		DB24737F17A8668000287D60 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		DB24738017A8668000287D60 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		DB24738117A8668000287D60 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		DB24738217A8668000287D60 /* rounded_rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rounded_rectangle.png; sourceTree = "<group>"; };
+		DB24738417A8668000287D60 /* beatsMono.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beatsMono.caf; sourceTree = "<group>"; };
+		DB24738517A8668000287D60 /* guitarStereo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitarStereo.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +76,9 @@
 		DB24734117A8663000287D60 = {
 			isa = PBXGroup;
 			children = (
-				DB24735317A8663000287D60 /* MixerHost */,
+				DB24736A17A8668000287D60 /* Classes */,
+				DB24739917A866A100287D60 /* Other Sources */,
+				DB24737617A8668000287D60 /* Resources */,
 				DB24734C17A8663000287D60 /* Frameworks */,
 				DB24734B17A8663000287D60 /* Products */,
 			);
@@ -75,28 +102,63 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DB24735317A8663000287D60 /* MixerHost */ = {
+		DB24736A17A8668000287D60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DB24735C17A8663100287D60 /* AppDelegate.h */,
-				DB24735D17A8663100287D60 /* AppDelegate.m */,
-				DB24735417A8663000287D60 /* Supporting Files */,
+				DB24736B17A8668000287D60 /* MixerHostAppDelegate.h */,
+				DB24736C17A8668000287D60 /* MixerHostAppDelegate.m */,
+				DB24736D17A8668000287D60 /* MixerHostAudio.h */,
+				DB24736E17A8668000287D60 /* MixerHostAudio.m */,
+				DB24736F17A8668000287D60 /* MixerHostViewController.h */,
+				DB24737017A8668000287D60 /* MixerHostViewController.m */,
+				DB24737717A8668000287D60 /* MixerHostViewController.xib */,
 			);
-			path = MixerHost;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		DB24735417A8663000287D60 /* Supporting Files */ = {
+		DB24737617A8668000287D60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DB24735517A8663000287D60 /* MixerHost-Info.plist */,
-				DB24735617A8663000287D60 /* InfoPlist.strings */,
-				DB24735917A8663000287D60 /* main.m */,
-				DB24735B17A8663000287D60 /* MixerHost-Prefix.pch */,
-				DB24735F17A8663100287D60 /* Default.png */,
-				DB24736117A8663100287D60 /* Default@2x.png */,
-				DB24736317A8663100287D60 /* Default-568h@2x.png */,
+				DB24737517A8668000287D60 /* MixerHost-Info.plist */,
+				DB24737917A8668000287D60 /* images */,
+				DB24738317A8668000287D60 /* sounds */,
 			);
-			name = "Supporting Files";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DB24737917A8668000287D60 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				DB24737217A8668000287D60 /* Default-568h@2x.png */,
+				DB24737A17A8668000287D60 /* Default.png */,
+				DB24737B17A8668000287D60 /* Icon-72.png */,
+				DB24737C17A8668000287D60 /* Icon-Small-50.png */,
+				DB24737D17A8668000287D60 /* Icon-Small.png */,
+				DB24737E17A8668000287D60 /* Icon-Small@2x.png */,
+				DB24737F17A8668000287D60 /* Icon.png */,
+				DB24738017A8668000287D60 /* Icon@2x.png */,
+				DB24738117A8668000287D60 /* iTunesArtwork */,
+				DB24738217A8668000287D60 /* rounded_rectangle.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		DB24738317A8668000287D60 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DB24738417A8668000287D60 /* beatsMono.caf */,
+				DB24738517A8668000287D60 /* guitarStereo.caf */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		DB24739917A866A100287D60 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DB24737417A8668000287D60 /* MixerHost_Prefix.pch */,
+				DB24737317A8668000287D60 /* main.m */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,10 +212,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB24735817A8663000287D60 /* InfoPlist.strings in Resources */,
-				DB24736017A8663100287D60 /* Default.png in Resources */,
-				DB24736217A8663100287D60 /* Default@2x.png in Resources */,
-				DB24736417A8663100287D60 /* Default-568h@2x.png in Resources */,
+				DB24738A17A8668000287D60 /* Default-568h@2x.png in Resources */,
+				DB24738C17A8668000287D60 /* MixerHost-Info.plist in Resources */,
+				DB24738D17A8668000287D60 /* MixerHostViewController.xib in Resources */,
+				DB24738E17A8668000287D60 /* Default.png in Resources */,
+				DB24738F17A8668000287D60 /* Icon-72.png in Resources */,
+				DB24739017A8668000287D60 /* Icon-Small-50.png in Resources */,
+				DB24739117A8668000287D60 /* Icon-Small.png in Resources */,
+				DB24739217A8668000287D60 /* Icon-Small@2x.png in Resources */,
+				DB24739317A8668000287D60 /* Icon.png in Resources */,
+				DB24739417A8668000287D60 /* Icon@2x.png in Resources */,
+				DB24739517A8668000287D60 /* iTunesArtwork in Resources */,
+				DB24739617A8668000287D60 /* rounded_rectangle.png in Resources */,
+				DB24739717A8668000287D60 /* beatsMono.caf in Resources */,
+				DB24739817A8668000287D60 /* guitarStereo.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,20 +236,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB24735A17A8663000287D60 /* main.m in Sources */,
-				DB24735E17A8663100287D60 /* AppDelegate.m in Sources */,
+				DB24738617A8668000287D60 /* MixerHostAppDelegate.m in Sources */,
+				DB24738717A8668000287D60 /* MixerHostAudio.m in Sources */,
+				DB24738817A8668000287D60 /* MixerHostViewController.m in Sources */,
+				DB24738B17A8668000287D60 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DB24735617A8663000287D60 /* InfoPlist.strings */ = {
+		DB24737717A8668000287D60 /* MixerHostViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DB24735717A8663000287D60 /* en */,
+				DB24737817A8668000287D60 /* en */,
 			);
-			name = InfoPlist.strings;
+			name = MixerHostViewController.xib;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
