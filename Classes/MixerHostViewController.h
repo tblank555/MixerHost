@@ -57,17 +57,6 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 
 @interface MixerHostViewController : UIViewController
 
-//    UIBarButtonItem *playButton;
-//    
-//    UISwitch        *mixerBus0Switch;
-//    UISwitch        *mixerBus1Switch;
-//    
-//    UISlider        *mixerBus0LevelFader;
-//    UISlider        *mixerBus1LevelFader;
-//    UISlider        *mixerOutputLevelFader;
-//
-//    MixerHostAudio  *audioObject;
-//}
 
 @property (nonatomic, retain)    IBOutlet UIBarButtonItem    *playButton; 
 

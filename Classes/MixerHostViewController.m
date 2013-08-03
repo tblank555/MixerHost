@@ -59,36 +59,25 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 
 @implementation MixerHostViewController
 
-// To learn about properties, see "Declared Properties" in the "Cocoa Objects" chapter
-//    in Cocoa Fundamentals Guide
-@synthesize playButton;
-@synthesize mixerBus0Switch;
-@synthesize mixerBus1Switch;
-@synthesize mixerBus1LevelFader;
-@synthesize mixerOutputLevelFader;
-
-@synthesize audioObject;
-
-
 # pragma mark -
 # pragma mark User interface methods
 // Set the initial multichannel mixer unit parameter values according to the UI state
 - (void) initializeMixerSettingsToUI {
 
     // Initialize mixer settings to UI
-    [audioObject enableMixerInput: 0 isOn: mixerBus0Switch.isOn];
-    [audioObject enableMixerInput: 1 isOn: mixerBus1Switch.isOn];
+    [self.audioObject enableMixerInput: 0 isOn: self.mixerBus0Switch.isOn];
+    [self.audioObject enableMixerInput: 1 isOn: self.mixerBus1Switch.isOn];
         
-    [audioObject setMixerOutputGain: mixerOutputLevelFader.value];
+    [self.audioObject setMixerOutputGain: self.mixerOutputLevelFader.value];
     
-    [audioObject setMixerInput: 0 gain: self.mixerBus0LevelFader.value];
-    [audioObject setMixerInput: 1 gain: mixerBus1LevelFader.value];
+    [self.audioObject setMixerInput: 0 gain: self.mixerBus0LevelFader.value];
+    [self.audioObject setMixerInput: 1 gain: self.mixerBus1LevelFader.value];
 }
 
 // Handle a change in the mixer output gain slider.
 - (IBAction) mixerOutputGainChanged: (UISlider *) sender {
 
-    [audioObject setMixerOutputGain: (AudioUnitParameterValue) sender.value];
+    [self.audioObject setMixerOutputGain: (AudioUnitParameterValue) sender.value];
 }
 
 // Handle a change in a mixer input gain slider. The "tag" value of the slider lets this 
@@ -96,7 +85,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 - (IBAction) mixerInputGainChanged: (UISlider *) sender {
 
     UInt32 inputBus = sender.tag;
-    [audioObject setMixerInput: (UInt32) inputBus gain: (AudioUnitParameterValue) sender.value];
+    [self.audioObject setMixerInput: (UInt32) inputBus gain: (AudioUnitParameterValue) sender.value];
 }
 
 
@@ -106,14 +95,14 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 // Handle a play/stop button tap
 - (IBAction) playOrStop: (id) sender {
 
-    if (audioObject.isPlaying) {
+    if (self.audioObject.isPlaying) {
     
-        [audioObject stopAUGraph];
+        [self.audioObject stopAUGraph];
         self.playButton.title = @"Play";
         
     } else {
     
-        [audioObject startAUGraph];
+        [self.audioObject startAUGraph];
         self.playButton.title = @"Stop";
     } 
 }
@@ -135,7 +124,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
     UInt32 inputBus = sender.tag;
     AudioUnitParameterValue isOn = (AudioUnitParameterValue) sender.isOn;
     
-    [audioObject enableMixerInput: inputBus isOn: isOn];
+    [self.audioObject enableMixerInput: inputBus isOn: isOn];
 
 }
 
@@ -172,7 +161,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
     [notificationCenter addObserver: self
                            selector: @selector (handlePlaybackStateChanged:)
                                name: MixerHostAudioObjectPlaybackStateDidChangeNotification
-                             object: audioObject];
+                             object: self.audioObject];
 }
 
 
@@ -236,7 +225,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 
     [[NSNotificationCenter defaultCenter] removeObserver: self
                                                     name: MixerHostAudioObjectPlaybackStateDidChangeNotification
-                                                  object: audioObject];
+                                                  object: self.audioObject];
 
     self.audioObject            = nil;
     [super viewDidUnload];
@@ -245,18 +234,18 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 
 - (void) dealloc {
 
-    [playButton             release];
-    [mixerBus0Switch        release];
-    [mixerBus1Switch        release];
+    [self.playButton             release];
+    [self.mixerBus0Switch        release];
+    [self.mixerBus1Switch        release];
     [self.mixerBus0LevelFader    release];
-    [mixerBus1LevelFader    release];
-    [mixerOutputLevelFader  release];
+    [self.mixerBus1LevelFader    release];
+    [self.mixerOutputLevelFader  release];
 
     [[NSNotificationCenter defaultCenter] removeObserver: self
                                                     name: MixerHostAudioObjectPlaybackStateDidChangeNotification
-                                                  object: audioObject];
+                                                  object: self.audioObject];
 
-    [audioObject            release];
+    [self.audioObject            release];
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [super dealloc];
 }
