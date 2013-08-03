@@ -63,7 +63,6 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 //    in Cocoa Fundamentals Guide
 @synthesize playButton;
 @synthesize mixerBus0Switch;
-@synthesize mixerBus0LevelFader;
 @synthesize mixerBus1Switch;
 @synthesize mixerBus1LevelFader;
 @synthesize mixerOutputLevelFader;
@@ -82,7 +81,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
         
     [audioObject setMixerOutputGain: mixerOutputLevelFader.value];
     
-    [audioObject setMixerInput: 0 gain: mixerBus0LevelFader.value];
+    [audioObject setMixerInput: 0 gain: self.mixerBus0LevelFader.value];
     [audioObject setMixerInput: 1 gain: mixerBus1LevelFader.value];
 }
 
@@ -249,7 +248,7 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
     [playButton             release];
     [mixerBus0Switch        release];
     [mixerBus1Switch        release];
-    [mixerBus0LevelFader    release];
+    [self.mixerBus0LevelFader    release];
     [mixerBus1LevelFader    release];
     [mixerOutputLevelFader  release];
 
