@@ -135,15 +135,10 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
 
     if (receivedEvent.type == UIEventTypeRemoteControl) {
-    
-        switch (receivedEvent.subtype) {
         
-            case UIEventSubtypeRemoteControlTogglePlayPause:
-                [self playOrStop: nil];
-                break;
+        if (receivedEvent.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
             
-            default:
-                break;
+            [self playOrStop:nil];
         }
     }
 }
@@ -171,10 +166,8 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 - (void) viewDidLoad {
 
     [super viewDidLoad];
-
-    MixerHostAudio *newAudioObject = [[MixerHostAudio alloc] init];
-    self.audioObject = newAudioObject;
-    [newAudioObject release];
+    
+    self.audioObject = [[MixerHostAudio alloc] init];
     
     [self registerForAudioObjectNotifications];
     [self initializeMixerSettingsToUI];
@@ -195,15 +188,6 @@ NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAu
 
     return YES;
 }
-
-
-- (void) didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 
 - (void) viewWillDisppear: (BOOL) animated {
 
