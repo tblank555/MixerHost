@@ -189,8 +189,7 @@ void audioRouteChangeListenerCallback (
         if (routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) {
 
             NSLog (@"Audio output device was removed; stopping audio playback.");
-            NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAudioObjectPlaybackStateDidChangeNotification";
-            [[NSNotificationCenter defaultCenter] postNotificationName: MixerHostAudioObjectPlaybackStateDidChangeNotification object: audioObject]; 
+            [[NSNotificationCenter defaultCenter] postNotificationName: @"MixerHostAudioObjectPlaybackStateDidChangeNotification" object: audioObject];
 
         } else {
 
@@ -871,8 +870,7 @@ void audioRouteChangeListenerCallback (
     
         self.interruptedDuringPlayback = YES;
         
-        NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAudioObjectPlaybackStateDidChangeNotification";
-        [[NSNotificationCenter defaultCenter] postNotificationName: MixerHostAudioObjectPlaybackStateDidChangeNotification object: self]; 
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"MixerHostAudioObjectPlaybackStateDidChangeNotification" object: self];
     }
 }
 
@@ -903,8 +901,7 @@ void audioRouteChangeListenerCallback (
 
                 // Resume playback by sending a notification to the controller object, which
                 //    in turn invokes the playOrStop: toggle method.
-                NSString *MixerHostAudioObjectPlaybackStateDidChangeNotification = @"MixerHostAudioObjectPlaybackStateDidChangeNotification";
-                [[NSNotificationCenter defaultCenter] postNotificationName: MixerHostAudioObjectPlaybackStateDidChangeNotification object: self]; 
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"MixerHostAudioObjectPlaybackStateDidChangeNotification" object: self]; 
 
             }
         }
