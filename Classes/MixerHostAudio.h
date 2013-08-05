@@ -68,26 +68,18 @@ typedef struct {
 
 @interface MixerHostAudio : NSObject <AVAudioSessionDelegate> {
 
-    Float64                         graphSampleRate;
     CFURLRef                        sourceURLArray[NUM_FILES];
     soundStruct                     soundStructArray[NUM_FILES];
 
-    // Before using an AudioStreamBasicDescription struct you must initialize it to 0. However, because these ASBDs
-    // are declared in external storage, they are automatically initialized to 0.
-    AudioStreamBasicDescription     stereoStreamFormat;
-    AudioStreamBasicDescription     monoStreamFormat;
     AUGraph                         processingGraph;
-    BOOL                            playing;
-    BOOL                            interruptedDuringPlayback;
-    AudioUnit                       mixerUnit;
 }
 
-@property (readwrite)           AudioStreamBasicDescription stereoStreamFormat;
-@property (readwrite)           AudioStreamBasicDescription monoStreamFormat;
-@property (readwrite)           Float64                     graphSampleRate;
-@property (getter = isPlaying)  BOOL                        playing;
-@property                       BOOL                        interruptedDuringPlayback;
-@property                       AudioUnit                   mixerUnit;
+@property                       AudioStreamBasicDescription stereoStreamFormat;        // Stereo format for use in buffer and mixer input for "guitar" sound
+@property                       AudioStreamBasicDescription monoStreamFormat;          // Mono format for use in buffer and mixer input for "beats" sound
+@property                       Float64                     graphSampleRate;           // Sample rate to use throughout audio processing chain
+@property (getter = isPlaying)  BOOL                        playing;                   // Flag to indicate whether audio is playing or not
+@property                       BOOL                        interruptedDuringPlayback; // Flag to indicate whether audio was playing when an interruption arrived
+@property                       AudioUnit                   mixerUnit;                 // The Multichannel Mixer unit
 
 - (void) obtainSoundFileURLs;
 - (void) setupAudioSession;

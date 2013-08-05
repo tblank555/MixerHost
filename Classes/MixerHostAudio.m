@@ -203,13 +203,6 @@ void audioRouteChangeListenerCallback (
 #pragma mark -
 @implementation MixerHostAudio
 
-@synthesize stereoStreamFormat;         // stereo format for use in buffer and mixer input for "guitar" sound
-@synthesize monoStreamFormat;           // mono format for use in buffer and mixer input for "beats" sound
-@synthesize graphSampleRate;            // sample rate to use throughout audio processing chain
-@synthesize mixerUnit;                  // the Multichannel Mixer unit
-@synthesize playing;                    // Boolean flag to indicate whether audio is playing or not
-@synthesize interruptedDuringPlayback;  // Boolean flag to indicate whether audio was playing when an interruption arrived
-
 #pragma mark -
 #pragma mark Initialize
 
@@ -258,7 +251,7 @@ void audioRouteChangeListenerCallback (
     // Request the desired hardware sample rate.
     self.graphSampleRate = 44100.0;    // Hertz
     
-    [mySession setPreferredHardwareSampleRate: graphSampleRate
+    [mySession setPreferredHardwareSampleRate: self.graphSampleRate
                                         error: &audioSessionError];
     
     if (audioSessionError != nil) {
@@ -309,21 +302,24 @@ void audioRouteChangeListenerCallback (
     // The AudioUnitSampleType data type is the recommended type for sample data in audio
     //    units. This obtains the byte size of the type for use in filling in the ASBD.
     size_t bytesPerSample = sizeof (AudioUnitSampleType);
+    
+    // IMPORTANT: You must initialize ASBDs to 0 before using them
+    self.stereoStreamFormat = (AudioStreamBasicDescription) {0};
 
     // Fill the application audio format struct's fields to define a linear PCM, 
     //        stereo, noninterleaved stream at the hardware sample rate.
-    stereoStreamFormat.mFormatID          = kAudioFormatLinearPCM;
-    stereoStreamFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
-    stereoStreamFormat.mBytesPerPacket    = bytesPerSample;
-    stereoStreamFormat.mFramesPerPacket   = 1;
-    stereoStreamFormat.mBytesPerFrame     = bytesPerSample;
-    stereoStreamFormat.mChannelsPerFrame  = 2;                    // 2 indicates stereo
-    stereoStreamFormat.mBitsPerChannel    = 8 * bytesPerSample;
-    stereoStreamFormat.mSampleRate        = graphSampleRate;
+    _stereoStreamFormat.mFormatID          = kAudioFormatLinearPCM;
+    _stereoStreamFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
+    _stereoStreamFormat.mBytesPerPacket    = bytesPerSample;
+    _stereoStreamFormat.mFramesPerPacket   = 1;
+    _stereoStreamFormat.mBytesPerFrame     = bytesPerSample;
+    _stereoStreamFormat.mChannelsPerFrame  = 2;                    // 2 indicates stereo
+    _stereoStreamFormat.mBitsPerChannel    = 8 * bytesPerSample;
+    _stereoStreamFormat.mSampleRate        = self.graphSampleRate;
 
 
     NSLog (@"The stereo stream format for the \"guitar\" mixer input bus:");
-    [self printASBD: stereoStreamFormat];
+    [self printASBD: self.stereoStreamFormat];
 }
 
 
@@ -332,20 +328,23 @@ void audioRouteChangeListenerCallback (
     // The AudioUnitSampleType data type is the recommended type for sample data in audio
     //    units. This obtains the byte size of the type for use in filling in the ASBD.
     size_t bytesPerSample = sizeof (AudioUnitSampleType);
+    
+    // IMPORTANT: You must initialize ASBDs to 0 before using them
+    self.monoStreamFormat = (AudioStreamBasicDescription) {0};
 
     // Fill the application audio format struct's fields to define a linear PCM, 
     //        stereo, noninterleaved stream at the hardware sample rate.
-    monoStreamFormat.mFormatID          = kAudioFormatLinearPCM;
-    monoStreamFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
-    monoStreamFormat.mBytesPerPacket    = bytesPerSample;
-    monoStreamFormat.mFramesPerPacket   = 1;
-    monoStreamFormat.mBytesPerFrame     = bytesPerSample;
-    monoStreamFormat.mChannelsPerFrame  = 1;                  // 1 indicates mono
-    monoStreamFormat.mBitsPerChannel    = 8 * bytesPerSample;
-    monoStreamFormat.mSampleRate        = graphSampleRate;
+    _monoStreamFormat.mFormatID          = kAudioFormatLinearPCM;
+    _monoStreamFormat.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
+    _monoStreamFormat.mBytesPerPacket    = bytesPerSample;
+    _monoStreamFormat.mFramesPerPacket   = 1;
+    _monoStreamFormat.mBytesPerFrame     = bytesPerSample;
+    _monoStreamFormat.mChannelsPerFrame  = 1;                  // 1 indicates mono
+    _monoStreamFormat.mBitsPerChannel    = 8 * bytesPerSample;
+    _monoStreamFormat.mSampleRate        = self.graphSampleRate;
 
     NSLog (@"The mono stream format for the \"beats\" mixer input bus:");
-    [self printASBD: monoStreamFormat];
+    [self printASBD: self.monoStreamFormat];
 
 }
 
@@ -415,12 +414,12 @@ void audioRouteChangeListenerCallback (
             //    hold the right channel audio data
             soundStructArray[audioFile].audioDataRight =
                 (AudioUnitSampleType *) calloc (totalFramesInFile, sizeof (AudioUnitSampleType));
-            importFormat = stereoStreamFormat;
+            importFormat = self.stereoStreamFormat;
             
         } else if (1 == channelCount) {
         
             soundStructArray[audioFile].isStereo = NO;
-            importFormat = monoStreamFormat;
+            importFormat = self.monoStreamFormat;
             
         } else {
         
@@ -615,7 +614,7 @@ void audioRouteChangeListenerCallback (
                     processingGraph,
                     mixerNode,
                     NULL,
-                    &mixerUnit
+                    &_mixerUnit
                 );
     
     if (noErr != result) {[self printErrorMessage: @"AUGraphNodeInfo" withStatus: result]; return;}
@@ -630,7 +629,7 @@ void audioRouteChangeListenerCallback (
     
     NSLog (@"Setting mixer unit input bus count to: %u", (unsigned int)busCount);
     result = AudioUnitSetProperty (
-                 mixerUnit,
+                 self.mixerUnit,
                  kAudioUnitProperty_ElementCount,
                  kAudioUnitScope_Input,
                  0,
@@ -647,7 +646,7 @@ void audioRouteChangeListenerCallback (
     UInt32 maximumFramesPerSlice = 4096;
     
     result = AudioUnitSetProperty (
-                 mixerUnit,
+                 self.mixerUnit,
                  kAudioUnitProperty_MaximumFramesPerSlice,
                  kAudioUnitScope_Global,
                  0,
@@ -681,12 +680,12 @@ void audioRouteChangeListenerCallback (
 
     NSLog (@"Setting stereo stream format for mixer unit \"guitar\" input bus");
     result = AudioUnitSetProperty (
-                 mixerUnit,
+                 self.mixerUnit,
                  kAudioUnitProperty_StreamFormat,
                  kAudioUnitScope_Input,
                  guitarBus,
-                 &stereoStreamFormat,
-                 sizeof (stereoStreamFormat)
+                 &_stereoStreamFormat,
+                 sizeof (_stereoStreamFormat)
              );
 
     if (noErr != result) {[self printErrorMessage: @"AudioUnitSetProperty (set mixer unit guitar input bus stream format)" withStatus: result];return;}
@@ -694,12 +693,12 @@ void audioRouteChangeListenerCallback (
 
     NSLog (@"Setting mono stream format for mixer unit \"beats\" input bus");
     result = AudioUnitSetProperty (
-                 mixerUnit,
+                 self.mixerUnit,
                  kAudioUnitProperty_StreamFormat,
                  kAudioUnitScope_Input,
                  beatsBus,
-                 &monoStreamFormat,
-                 sizeof (monoStreamFormat)
+                 &_monoStreamFormat,
+                 sizeof (_monoStreamFormat)
              );
 
     if (noErr != result) {[self printErrorMessage: @"AudioUnitSetProperty (set mixer unit beats input bus stream format)" withStatus: result];return;}
@@ -709,12 +708,12 @@ void audioRouteChangeListenerCallback (
     // Set the mixer unit's output sample rate format. This is the only aspect of the output stream
     //    format that must be explicitly set.
     result = AudioUnitSetProperty (
-                 mixerUnit,
+                 self.mixerUnit,
                  kAudioUnitProperty_SampleRate,
                  kAudioUnitScope_Output,
                  0,
-                 &graphSampleRate,
-                 sizeof (graphSampleRate)
+                 &_graphSampleRate,
+                 sizeof (_graphSampleRate)
              );
 
     if (noErr != result) {[self printErrorMessage: @"AudioUnitSetProperty (set mixer unit output stream format)" withStatus: result]; return;}
@@ -791,7 +790,7 @@ void audioRouteChangeListenerCallback (
     NSLog (@"Bus %d now %@", (int) inputBus, isOnValue ? @"on" : @"off");
          
     OSStatus result = AudioUnitSetParameter (
-                         mixerUnit,
+                         self.mixerUnit,
                          kMultiChannelMixerParam_Enable,
                          kAudioUnitScope_Input,
                          inputBus,
@@ -828,7 +827,7 @@ void audioRouteChangeListenerCallback (
     loops stay in sync when a user disables and then reenables an input bus.
 */
     OSStatus result = AudioUnitSetParameter (
-                         mixerUnit,
+                         self.mixerUnit,
                          kMultiChannelMixerParam_Volume,
                          kAudioUnitScope_Input,
                          inputBus,
@@ -845,7 +844,7 @@ void audioRouteChangeListenerCallback (
 - (void) setMixerOutputGain: (AudioUnitParameterValue) newGain {
 
     OSStatus result = AudioUnitSetParameter (
-                         mixerUnit,
+                         self.mixerUnit,
                          kMultiChannelMixerParam_Volume,
                          kAudioUnitScope_Output,
                          0,
@@ -868,7 +867,7 @@ void audioRouteChangeListenerCallback (
 
     NSLog (@"Audio session was interrupted.");
     
-    if (playing) {
+    if (self.isPlaying) {
     
         self.interruptedDuringPlayback = YES;
         
@@ -898,7 +897,7 @@ void audioRouteChangeListenerCallback (
         
             NSLog (@"Audio session reactivated after interruption.");
             
-            if (interruptedDuringPlayback) {
+            if (self.interruptedDuringPlayback) {
             
                 self.interruptedDuringPlayback = NO;
 
