@@ -383,7 +383,7 @@ void audioRouteChangeListenerCallback (
         // Assign the frame count to the soundStructArray instance variable
         soundStructArray[audioFile].frameCount = totalFramesInFile;
 
-        // Get the audio file's number of channels.
+        // Get the audio file's data format
         AudioStreamBasicDescription fileAudioFormat = {0};
         UInt32 formatPropertySize = sizeof (fileAudioFormat);
         
@@ -395,11 +395,15 @@ void audioRouteChangeListenerCallback (
                     );
 
         if (noErr != result) {[self printErrorMessage: @"ExtAudioFileGetProperty (file audio format)" withStatus: result]; return;}
-
+        
+        // Get the audio file's number of channels
         UInt32 channelCount = fileAudioFormat.mChannelsPerFrame;
         
         // Allocate memory in the soundStructArray instance variable to hold the left channel, 
         //    or mono, audio data
+        //
+        // calloc (size_t num, size_t size) allocates and initializes (to 0) an array of num elements,
+        //    each of which is size bytes long
         soundStructArray[audioFile].audioDataLeft =
             (AudioUnitSampleType *) calloc (totalFramesInFile, sizeof (AudioUnitSampleType));
 
@@ -451,7 +455,8 @@ void audioRouteChangeListenerCallback (
         // Allocate memory for the buffer list struct according to the number of 
         //    channels it represents.
         AudioBufferList *bufferList;
-
+        
+        // malloc (size_t size) allocates a block of memory of size bytes, but doesn't initalize them
         bufferList = (AudioBufferList *) malloc (
             sizeof (AudioBufferList) + sizeof (AudioBuffer) * (channelCount - 1)
         );
@@ -801,7 +806,6 @@ void audioRouteChangeListenerCallback (
     if (0 == inputBus && 1 == isOnValue) {
         soundStructArray[0].sampleNumber = soundStructArray[1].sampleNumber;
     }
-    
     if (1 == inputBus && 1 == isOnValue) {
         soundStructArray[1].sampleNumber = soundStructArray[0].sampleNumber;
     }
