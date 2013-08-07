@@ -839,7 +839,7 @@ void audioRouteChangeListenerCallback (
 }
 
 
-// Set the mxer unit output volume
+// Set the mixer unit output volume
 - (void) setMixerOutputGain: (AudioUnitParameterValue) newGain {
 
     OSStatus result = AudioUnitSetParameter (
